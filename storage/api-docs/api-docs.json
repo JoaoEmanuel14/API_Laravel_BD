@@ -1,0 +1,99 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API - Estudo da Tecnologia",
+        "description": "API feita por João Emanuel para cumprimento da atividade Estudo da Tecnologia",
+        "contact": {
+            "email": "darius@matulionis.lt"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/usuarios": {
+            "get": {
+                "summary": "Listar todos os usuários",
+                "description": "Exibe uma lista de todos os usuários cadastrados no banco de dados",
+                "operationId": "600ec787a82d08ec298424fd97dd33d9",
+                "responses": {
+                    "200": {
+                        "description": "Lista de usuários"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar um novo usuário",
+                "description": "Recebe os dados de um novo usuário e o cadastra no banco de dados",
+                "operationId": "12af6b3d715bf3099de301b50a13d0da",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "cpf",
+                                    "nome",
+                                    "data_nascimento"
+                                ],
+                                "properties": {
+                                    "cpf": {
+                                        "type": "integer",
+                                        "example": 2612
+                                    },
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "Renan"
+                                    },
+                                    "data_nascimento": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2003-06-28"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário cadastrado com sucesso!"
+                    },
+                    "500": {
+                        "description": "Não foi possível cadastrar o usuário!"
+                    }
+                }
+            }
+        },
+        "/api/usuario/{cpf}": {
+            "get": {
+                "summary": "Exibe um usuário específico",
+                "description": "Retorna os dados de um usuário com base no cpf fornecido",
+                "operationId": "7e20a8c4368389b3bd419c7fcd3ed552",
+                "parameters": [
+                    {
+                        "name": "cpf",
+                        "in": "path",
+                        "description": "Nome do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "int",
+                            "example": 1234
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do usuário"
+                    },
+                    "500": {
+                        "description": "Usuário não encontrado!"
+                    }
+                }
+            }
+        }
+    }
+}
