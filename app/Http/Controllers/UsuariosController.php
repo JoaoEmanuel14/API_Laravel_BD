@@ -92,7 +92,8 @@ class UsuariosController extends Controller
      *         in="path",
      *         required=true,
      *         @OA\Schema(
-     *          type="int", example=1234
+     *              type="integer", 
+     *              example=1234
      *         )
      *     ),
      *     @OA\Response(
